@@ -1,9 +1,17 @@
+/*
+
+Explore Data for Covid information as of 25-12-2021
+
+*/
+
 select *
 from PortfolioProject.dbo.CovidDeaths
 where location like 'High income'
 
 
 --Total Covid Case and Death Per population of each Country
+--Show how many covid case and death for each country and their population
+
 select location,
 isnull(max(total_cases),0) as TotalCase,
 isnull(max(convert(int,total_deaths)),0) as TotalDeath,
@@ -16,7 +24,10 @@ and population is not null
 group by location,population
 order by location
 
+
 --Country with the most death per covidcase
+--Percentage chance of dying for each country if infected with Covid
+
 select location,
 isnull(max(total_cases),0) as TotalCase,
 isnull(max(cast(total_deaths as int)),0) as TotalDeath,
@@ -28,7 +39,10 @@ and population is not null
 group by location
 order by 4 desc
 
+
 --Country with the most Covid Cases Per Population
+--Show country with the most case per their population
+
 select location,
 population as Population,
 max(total_cases) as TotalCase,
@@ -40,7 +54,9 @@ and total_cases is not null
 group by location,population
 order by CasePerPopulation desc
 
+
 --Covid Case and Death per continent and World
+--Show how many Cases and Death for each continent and the world
 select 
 location,
 population as Population,
@@ -60,6 +76,8 @@ group by location ,population
 order by 1
 
 --Covid Case per Income
+--What percentage of Covid in each income bracket
+
 select 
 location,
 population as Population,
@@ -76,6 +94,8 @@ order by 1
 
 
 --New Covid Case report by Date and Percent per population for Thailand 
+--Show Covid case by date for Thailand and the percentage of infected per population each day
+
 select location,
 date,
 population,
@@ -88,14 +108,17 @@ and location like '%thai%' --Change contry here
 and population is not null
 order by date
 
+
 --Join Vaccination information
 select *
 from CovidDeaths dea
 inner join CovidVaccination vac
 on dea.date = vac.date
 
+
 --Vaccination per country by Date and Per Population
---Use CTE
+--Show Vaccination rate per day by each country per their population. Using CTE to performe calculation on previous query
+
 with CombineData_Vac (Continent,Date,Location,Population,NewVaccination,TotalVaccinationSofar)
 AS
 (
@@ -121,7 +144,7 @@ order by 1 , 2
 
 
 --Total Vaccination each coutnry per population
---Use TempTable
+--What percentage of FullyVaccinate per population for each country. Use TempTable for calculation on previuos query
 drop table if exists #VaccinationPerCountry
 create table #VaccinationPerCountry 
 (
@@ -152,7 +175,8 @@ from #VaccinationPerCountry
 group by location,Population
 order by 1 
 
---Create View for further visualization
+
+--Create View to store table and for further visualization
 create view VaccinatePerCountry as
 select 
 vac.continent,
