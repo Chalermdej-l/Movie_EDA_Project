@@ -1,6 +1,6 @@
 /*
 
-Explore Data for Covid information as of 25-12-2021
+Explore Data for Covid information
 Information from : https://ourworldindata.org/explorers/coronavirus-data-explorer
 
 */
