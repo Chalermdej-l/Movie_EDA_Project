@@ -9,7 +9,10 @@
 ## Project Overview
 
 This project use the [Movie dataset](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset) from Kaggle. And proceed the data using Python with [Pandas](https://pandas.pydata.org/) package.
-And visualize the data for Exploratory Data Analysis (EDA) using [Matplotlib](https://matplotlib.org/) + [Seaborn](https://seaborn.pydata.org/) package
+And visualize the data for Exploratory Data Analysis (EDA) using [Matplotlib](https://matplotlib.org/) + [Seaborn](https://seaborn.pydata.org/) package. This dataset is collcted for the movie relased on or before July 2017 there are multiple file
+in this dataset like Cast, Crew, Movies Metadata etc. Which hold information for movie and revenue and rating from the user collect from [GroupLens](https://grouplens.org/).
+
+In this project I am to load and clean the data. Find any intesting fact and trend in the movie produce.
 
 
 ## Prerequisite
