@@ -34,7 +34,7 @@ You will also need the below package.
 1. [Pandas](https://pandas.pydata.org/)
 2. [Matplotlib](https://matplotlib.org/)
 3. [Seaborn](https://seaborn.pydata.org/)
-
+4. [Numpy](https://numpy.org/)
 
 ## Reproducibility
 Clone this project
